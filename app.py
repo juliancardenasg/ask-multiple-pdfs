@@ -10,6 +10,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 
+
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -66,7 +67,7 @@ def handle_userinput(user_question):
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Chat with multiple PDFs",
+    st.set_page_config(page_title="Analyze your financial documents in PDFs format",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -75,7 +76,9 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple PDFs :books:")
+    #Add company logo
+    st.image("https://static.wixstatic.com/media/6f8f29_3e2c20a5ae86460e814fd3a3eac98f42~mv2.png/v1/crop/x_50,y_67,w_850,h_852/fill/w_160,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Group%20127.png", width=300)
+    st.header("Welcome to the Bucks Financial Document Analyzer Demo :wave:")
     user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
