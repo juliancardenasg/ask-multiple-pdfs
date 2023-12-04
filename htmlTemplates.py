@@ -23,6 +23,10 @@ css = '''
   padding: 0 1.5rem;
   color: #fff;
 }
+.input.stTextInput {
+    border-color: blue; /* Cambia esto por tu color preferido */
+}
+</style>
 '''
 
 bot_template = '''

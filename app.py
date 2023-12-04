@@ -77,16 +77,18 @@ def main():
         st.session_state.chat_history = None
 
     #Add company logo
-    st.image("https://static.wixstatic.com/media/6f8f29_3e2c20a5ae86460e814fd3a3eac98f42~mv2.png/v1/crop/x_50,y_67,w_850,h_852/fill/w_160,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Group%20127.png", width=300)
+    st.image("https://static.wixstatic.com/media/6f8f29_3e2c20a5ae86460e814fd3a3eac98f42~mv2.png/v1/crop/x_50,y_67,w_850,h_852/fill/w_160,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Group%20127.png", width=150)
     st.header("Welcome to the Bucks Financial Document Analyzer Demo :wave:")
     user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
 
+
     with st.sidebar:
         st.subheader("Your documents")
         pdf_docs = st.file_uploader(
-            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+            "Upload your financial PDFs here and click on 'Process'", accept_multiple_files=True)
+            
         if st.button("Process"):
             with st.spinner("Processing"):
                 # get pdf text
@@ -101,6 +103,14 @@ def main():
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(
                     vectorstore)
+    # Call to Action
+    st.markdown("""
+        [Schedule a personalized demo? Click here](https://calendly.com/juanpm)
+    """)
+                
+                
+    
+    
 
 
 if __name__ == '__main__':
